@@ -1,0 +1,64 @@
+:root {
+    --civil: #00d2ff;   /* Azul Civil */
+    --impostor: #ff2a2a; /* Rojo Impostor */
+    --bg-dark: rgba(10, 15, 25, 0.95);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex; justify-content: center; align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://flagpedia.net/data/flags/w1600/ar.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+#game-container {
+    width: 90%; max-width: 450px;
+    background: var(--bg-dark);
+    border: 2px solid white;
+    padding: 20px; text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+h1, h2, p, .player-item { color: white; }
+
+/* Clases de Colores Dinámicos */
+.txt-civil { color: var(--civil) !important; font-weight: bold; text-shadow: 0 0 5px var(--civil); }
+.txt-impostor { color: var(--impostor) !important; font-weight: bold; text-shadow: 0 0 5px var(--impostor); }
+
+.player-item {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid white;
+    margin: 5px 0; padding: 12px;
+    list-style: none; text-align: left;
+    text-transform: uppercase;
+}
+
+.word-card {
+    background: #000; border: 2px dashed white;
+    padding: 40px 10px; font-size: 1.2rem; cursor: pointer; color: white;
+}
+
+.identity-card {
+    border: 4px solid white; padding: 40px;
+    font-size: 1.8rem; margin-bottom: 20px; background: rgba(0,0,0,0.5);
+}
+
+#timer { font-size: 4rem; color: #00ff88; }
+
+.btn-main {
+    background: white; color: black; border: none;
+    padding: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; width: 100%;
+}
+
+.btn-sec {
+    background: transparent; color: white; border: 1px solid white;
+    padding: 10px; cursor: pointer; margin-top: 10px; width: 100%;
+}
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.hidden { display: none; }
+.flash { animation: blink 0.8s infinite; }
+@keyframes blink { 50% { opacity: 0.2; } }

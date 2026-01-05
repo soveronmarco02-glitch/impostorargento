@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impostor Argento - Eliminación Directa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scanline"></div>
+
+    <div id="game-container">
+        <h1 class="glitch" style="color: white !important;">🧉 IMPOSTOR ARGENTO</h1>
+
+        <div id="setup-screen" class="screen">
+            <div class="status-bar">SISTEMA: ESPERANDO JUGADORES...</div>
+            <div class="input-group">
+                <input type="text" id="playerName" placeholder="Nombre..." maxlength="12">
+                <button id="btnAdd">AÑADIR</button>
+            </div>
+            <ul id="playersUl"></ul> 
+            <button id="btnStart" class="btn-main" disabled>INICIAR PARTIDA</button>
+        </div>
+
+        <div id="reveal-screen" class="screen hidden">
+            <h2 id="turnOwner" style="color: white;">---</h2>
+            <div class="scanner-container">
+                <div id="wordBox" class="word-card" style="color: white;">CLICK PARA ESCANEAR</div>
+                <div class="scan-bar"></div>
+            </div>
+            <button id="btnNext" class="btn-main hidden">CONFIRMAR</button>
+        </div>
+
+        <div id="debate-screen" class="screen hidden">
+            <h2 style="color: white;">DEBATE</h2>
+            <div id="timer">01:00</div>
+            <p id="remaining-count" style="color: #00d2ff; font-size: 0.8rem;"></p>
+            <div class="debate-controls">
+                <button id="btnSeguirRonda" class="btn-sec">MÁS TIEMPO</button>
+                <button id="btnIrAVotar" class="btn-main">IR A VOTAR</button>
+            </div>
+        </div>
+
+        <div id="vote-screen" class="screen hidden">
+            <h2 style="color: white;">IDENTIFICAR OBJETIVO</h2>
+            <div id="voteGrid" class="grid"></div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <div id="resultIdentity" class="identity-card" style="color: white;"></div>
+            <button id="btnFinalAction" class="btn-main">CONTINUAR</button>
+        </div>
+
+        <div id="guess-screen" class="screen hidden">
+            <h2 class="flash" style="color: white;">ÚLTIMA OPORTUNIDAD</h2>
+            <p style="color: white;">ADIVINÁ LA PALABRA PARA GANAR:</p>
+            <input type="text" id="impostorGuess" placeholder="...">
+            <button id="btnCheckGuess" class="btn-main">CONFIRMAR</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

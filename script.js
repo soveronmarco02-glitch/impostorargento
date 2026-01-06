@@ -1,6 +1,6 @@
 const poolArgentina = [
     // COMIDA Y BEBIDA
-    {tripu: "Asado", impo: "amigos"},
+    {tripu: "Asado", impo: "pizza"},
     {tripu: "Choripan", impo: "ensalada"},
     {tripu: "Empanada", impo: " masa"},
     {tripu: "Alfajor", impo: "churro"},

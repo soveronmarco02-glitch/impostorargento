@@ -33,7 +33,7 @@ const poolArgentina = [
     {tripu: "Gardel", impo: "Cantante"},
     {tripu: "Ricardo Fort", impo: "millonario"},
     {tripu: "Bizarrap", impo: "musical"},
-    {tripu: "El Gaucho", impo: "campo"},
+    {tripu: "Gaucho", impo: "campo"},
     {tripu: "Mafalda", impo: "Personaje de historieta"},
     {tripu: "San Martín", impo: "Prócer "},
     {tripu: "Mirtha Legrand", impo: "Conductora de tele"},

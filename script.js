@@ -223,4 +223,4 @@ document.getElementById('btnCheckGuess').onclick = () => {
     location.reload();
 };
 
-document.getElementById('btnSeguirRonda').onclick = () => startTimer(60);
+document.getElementById('btnSeguirRonda').onclick = () => startTimer(180);

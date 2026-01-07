@@ -80,13 +80,17 @@ const poolArgentina = [
     {tripu: "Quilmes", impo: "cancha"},
     {tripu: "Mate Cocido", impo: "cafe"}
 ];
-
 let listaNombresGlobal = [];
 let datosPartida = [];
 let currentIndex = 0;
 let palabraCorrecta = "";
 let timerInterval;
 let timeLeft = 180;
+
+// LÓGICA MODAL REGLAS
+const modal = document.getElementById('rulesModal');
+document.getElementById('btnOpenRules').onclick = () => modal.classList.remove('hidden');
+document.getElementById('btnCloseRules').onclick = () => modal.classList.add('hidden');
 
 function actualizarListaUI() {
     const ul = document.getElementById('playersUl');
@@ -196,7 +200,7 @@ document.getElementById('btnIrAVotar').onclick = () => {
 function procesarVoto(jugador) {
     document.getElementById('vote-screen').classList.add('hidden');
     document.getElementById('result-screen').classList.remove('hidden');
-    document.getElementById('game-over-msg').innerText = ""; // Limpiar mensaje anterior
+    document.getElementById('game-over-msg').innerText = "";
     
     const esImpo = jugador.role === "IMPOSTOR";
     document.getElementById('resultIdentity').innerHTML = `${jugador.nombre}<br>ERA <span class="${esImpo ? 'txt-impostor' : 'txt-civil'}">${jugador.role}</span>`;
@@ -206,7 +210,6 @@ function procesarVoto(jugador) {
         const impsVivos = datosPartida.filter(p => p.vivo && p.role === "IMPOSTOR").length;
         
         if (esImpo && impsVivos === 0) {
-            // Ir a la última chance de adivinar
             document.getElementById('result-screen').classList.add('hidden');
             document.getElementById('guess-screen').classList.remove('hidden');
         } else {
@@ -244,3 +247,4 @@ function anunciarGanador(quien) {
         actualizarListaUI();
     };
 }
+

@@ -11,6 +11,11 @@
     <div id="game-container">
         <div id="setup-screen" class="screen">
             <h1 class="main-title">IMPOSTOR ARGENTO 🧉</h1>
+            
+            <button id="btnOpenRules" class="btn-rules-trigger">
+                <i class="fas fa-book-open"></i> ¿CÓMO JUGAR?
+            </button>
+
             <div class="menu-card section-card">
                 <div class="card-header">
                     <i class="fas fa-user-plus" style="color: #2575fc;"></i>
@@ -38,6 +43,19 @@
                 </div>
             </div>
             <button id="btnStart" class="btn-start-game">COMENZAR JUEGO</button>
+        </div>
+
+        <div id="rulesModal" class="modal hidden">
+            <div class="modal-content">
+                <h2 style="color: var(--celeste-arg); margin-top: 0;">📜 Instrucciones</h2>
+                <ul class="rules-list">
+                    <li><strong>1. El Secreto:</strong> Todos verán una palabra (ej: <i>Asado</i>), pero el <b>Impostor</b> verá una distinta (ej: <i>Pizza</i>).</li>
+                    <li><strong>2. El Debate:</strong> Hablen y describan la palabra sin decirla directamente.</li>
+                    <li><strong>3. El Objetivo:</strong> Los civiles deben hallar al impostor. El impostor debe pasar desapercibido.</li>
+                    <li><strong>4. La Votación:</strong> Voten a quién creen que es el chanta. Si lo descubren, él tiene una chance de adivinar la palabra de los civiles para ganar.</li>
+                </ul>
+                <button id="btnCloseRules" class="btn-start-game">¡ENTENDIDO!</button>
+            </div>
         </div>
 
         <div id="reveal-screen" class="screen hidden">

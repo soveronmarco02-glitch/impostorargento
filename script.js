@@ -6,10 +6,10 @@ const poolArgentina = [
     {tripu: "Facturas", impo: "dulces"}, {tripu: "Pizza ", impo: " queso"},
     {tripu: "Mantecol", impo: "papa noel"}, {tripu: "Vitel Toné", impo: "empanada"},
     {tripu: "Locro", impo: "campo"}, {tripu: "Provoleta", impo: "asado"},
-    {tripu: "Pastelitos", impo: "arina"}, {tripu: "Churros", impo: "azúcar"},
-    {tripu: "Salame", impo: "bondiola"}, {tripu: "Vino Tinto", impo: "soda"},
+    {tripu: "Pastelitos", impo: "harina"}, {tripu: "Churros", impo: "azúcar"},
+    {tripu: "Salame", impo: "bondiola"}, {tripu: "Vino Tinto", impo: "manaos"},
     {tripu: "Gancia", impo: "hierbas"}, {tripu: "Torta Frita", impo: "lluvia"},
-    {tripu: "Humita", impo: "Crema"}, {tripu: "Garrapiñada", impo: "seco"},
+    {tripu: "Humita", impo: "Crema"}, {tripu: "Garrapiñada", impo: "turron"},
     {tripu: "Tereré", impo: "fría"}, {tripu: "Picada", impo: "futbol"},
     {tripu: "Soda", impo: "gas"}, {tripu: "Messi", impo: "Capitán"},
     {tripu: "Maradona", impo: "histórico"}, {tripu: "Dibu Martínez", impo: "famoso"},
@@ -30,10 +30,10 @@ const poolArgentina = [
     {tripu: "Ushuaia", impo: "sur"}, {tripu: "Calle Corrientes", impo: "Avenida"},
     {tripu: "La Quiaca", impo: "Pueblo"}, {tripu: "Puerto Madero", impo: "Barrio"},
     {tripu: "Caminito", impo: "colores"}, {tripu: "Glaciar Perito Moreno", impo: "Masa"},
-    {tripu: "Bondi", impo: "urbano"}, {tripu: "Laburo", impo: "pesado"},
+    {tripu: "Bondi", impo: "caminar"}, {tripu: "Laburo", impo: "pesado"},
     {tripu: "Chamuyo", impo: "falso"}, {tripu: "Guita", impo: "oro"},
     {tripu: "Fiaca", impo: "Ganar"}, {tripu: "Chanta", impo: "enojo"},
-    {tripu: "Crotos", impo: "Personas"}, {tripu: "Quilmes", impo: "cancha"},
+    {tripu: "Crotos", impo: "Personas"}, {tripu: "Quilmes", impo: "flores"},
     {tripu: "Mate Cocido", impo: "cafe"}
 ];
 

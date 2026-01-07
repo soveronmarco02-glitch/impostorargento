@@ -1,125 +1,56 @@
+
 :root {
-    --civil: #00d2ff;   /* Azul Civil */
-    --impostor: #ff2a2a; /* Rojo Impostor */
-    --bg-dark: rgba(10, 15, 25, 0.95);
+    --celeste-arg: #74acdf;
+    --blanco-arg: #ffffff;
+    --card-bg: rgba(26, 29, 36, 0.95);
+    --accent-green: #00c853;
+    --azul-civil: #007bff;
+    --rojo-impostor: #ff3d00;
 }
 
 body {
     margin: 0;
-    height: 100vh;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex; justify-content: center; align-items: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://flagpedia.net/data/flags/w1600/ar.png') no-repeat center center fixed;
-    background-size: cover;
+    background: linear-gradient(to bottom, var(--celeste-arg) 33%, var(--blanco-arg) 33%, var(--blanco-arg) 66%, var(--celeste-arg) 66%);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    display: flex; justify-content: center; align-items: center; min-height: 100vh;
 }
 
-#game-container {
-    width: 90%; max-width: 450px;
-    background: var(--bg-dark);
-    border: 2px solid white;
-    padding: 20px; text-align: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+body::before {
+    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); z-index: -1;
 }
 
-h1, h2, p, .player-item { color: white; }
+#game-container { width: 100%; max-width: 420px; padding: 15px; }
 
-/* Clases de Colores Dinámicos */
-.txt-civil { color: var(--civil) !important; font-weight: bold; text-shadow: 0 0 5px var(--civil); }
-.txt-impostor { color: var(--impostor) !important; font-weight: bold; text-shadow: 0 0 5px var(--impostor); }
+.screen { width: 100%; animation: fadeIn 0.3s; text-align: center; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.player-item {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid white;
-    margin: 5px 0; padding: 12px;
-    list-style: none; text-align: left;
-    text-transform: uppercase;
-}
+.main-title { font-size: 2rem; font-weight: 900; margin-bottom: 25px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-.word-card {
-    background: #000; border: 2px dashed white;
-    padding: 40px 10px; font-size: 1.2rem; cursor: pointer; color: white;
-}
+.menu-card { background: var(--card-bg); border-radius: 15px; padding: 15px; margin-bottom: 12px; text-align: left; border: 1px solid #333; }
+.card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.card-title { font-weight: 600; font-size: 0.8rem; color: #aaa; text-transform: uppercase; }
 
-.identity-card {
-    border: 4px solid white; padding: 40px;
-    font-size: 1.8rem; margin-bottom: 20px; background: rgba(0,0,0,0.5);
-}
+input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #444; background: #000; color: white; box-sizing: border-box; }
+.input-group { display: flex; gap: 8px; margin-top: 10px; }
 
-#timer { font-size: 4rem; color: #00ff88; }
+.btn-small-add { background: #2575fc; color: white; border: none; padding: 0 15px; border-radius: 10px; font-weight: bold; cursor: pointer; }
 
-.btn-main {
-    background: white; color: black; border: none;
-    padding: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; width: 100%;
-}
+ul { list-style: none; padding: 0; max-height: 120px; overflow-y: auto; margin-top: 10px; }
+.player-item { background: rgba(255,255,255,0.05); padding: 8px; border-radius: 5px; margin-bottom: 4px; display: flex; justify-content: space-between; }
 
-.btn-sec {
-    background: transparent; color: white; border: 1px solid white;
-    padding: 10px; cursor: pointer; margin-top: 10px; width: 100%;
-}
+.settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.select-style { background: #000; color: white; border: 1px solid #444; border-radius: 5px; padding: 5px; }
 
+.btn-start-game { background: var(--accent-green); color: white; width: 100%; border: none; border-radius: 15px; padding: 18px; font-size: 1.2rem; font-weight: 800; cursor: pointer; margin-top: 15px; }
+.btn-sec { background: rgba(255,255,255,0.1); color: white; border: 1px solid #fff; width: 100%; padding: 10px; border-radius: 10px; margin-top: 10px; cursor: pointer; }
+
+#timer { font-size: 4rem; font-weight: bold; color: var(--accent-green); }
+.word-card { background: #000; border: 2px dashed var(--celeste-arg); border-radius: 20px; padding: 50px 10px; margin: 20px 0; cursor: pointer; font-size: 1.2rem; }
+
+.txt-civil { color: var(--azul-civil); font-weight: bold; }
+.txt-impostor { color: var(--rojo-impostor); font-weight: bold; }
+.hidden { display: none !important; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.hidden { display: none; }
-.flash { animation: blink 0.8s infinite; }
-@keyframes blink { 50% { opacity: 0.2; } }
-:root {
-    --civil: #00d2ff;
-    --impostor: #ff2a2a;
-    --bg-dark: rgba(10, 15, 25, 0.95);
-}
-
-body {
-    margin: 0; height: 100vh; font-family: 'Courier New', Courier, monospace;
-    display: flex; justify-content: center; align-items: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('https://flagpedia.net/data/flags/w1600/ar.png') no-repeat center center fixed;
-    background-size: cover; overflow: hidden;
-}
-
-#game-container {
-    width: 90%; max-width: 450px; background: var(--bg-dark);
-    border: 2px solid white; padding: 20px; text-align: center;
-    box-shadow: 0 0 30px rgba(0,0,0,0.8); position: relative;
-}
-
-h1, h2, p { color: white; text-transform: uppercase; }
-
-#playersUl { padding: 0; max-height: 200px; overflow-y: auto; }
-.player-item {
-    background: rgba(255,255,255,0.1); border: 1px solid white;
-    margin: 5px 0; padding: 10px; display: flex; 
-    justify-content: space-between; align-items: center; color: white;
-}
-
-.btn-del {
-    background: var(--impostor); color: white; border: none;
-    padding: 5px 10px; cursor: pointer; font-weight: bold;
-}
-
-.txt-civil { color: var(--civil) !important; font-weight: bold; text-shadow: 0 0 10px var(--civil); }
-.txt-impostor { color: var(--impostor) !important; font-weight: bold; text-shadow: 0 0 10px var(--impostor); }
-
-.word-card {
-    background: #000; border: 2px dashed white; padding: 30px 15px;
-    font-size: 1.2rem; cursor: pointer; color: white; border-radius: 10px;
-}
-
-#timer { font-size: 5rem; color: #00ff88; margin: 10px 0; font-weight: bold; }
-
-.btn-main {
-    background: white; color: black; border: none; padding: 15px;
-    font-weight: bold; cursor: pointer; margin-top: 10px; width: 100%; text-transform: uppercase;
-}
-
-.btn-sec {
-    background: transparent; color: white; border: 1px solid white;
-    padding: 10px; cursor: pointer; margin-top: 10px; width: 100%; text-transform: uppercase;
-}
-
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-.hidden { display: none; }
-.flash { animation: blink 0.5s infinite; }
-@keyframes blink { 50% { opacity: 0.3; } }
-
-.input-group { display: flex; gap: 5px; margin-bottom: 15px; }
-input { flex: 1; padding: 10px; background: black; border: 1px solid white; color: white; }

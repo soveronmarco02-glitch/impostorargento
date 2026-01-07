@@ -3,62 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impostor Argento - Eliminación Directa</title>
+    <title>Impostor Argento 🧉</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="scanline"></div>
-
     <div id="game-container">
-        <h1 class="glitch" style="color: white !important;">🧉 IMPOSTOR ARGENTO</h1>
-
         <div id="setup-screen" class="screen">
-            <div class="status-bar">SISTEMA: ESPERANDO JUGADORES...</div>
-            <div class="input-group">
-                <input type="text" id="playerName" placeholder="Nombre..." maxlength="12">
-                <button id="btnAdd">AÑADIR</button>
+            <h1 class="main-title">IMPOSTOR ARGENTO 🧉</h1>
+            <div class="menu-card section-card">
+                <div class="card-header">
+                    <i class="fas fa-user-plus" style="color: #2575fc;"></i>
+                    <span class="card-title">AGREGAR INTEGRANTES</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="playerName" placeholder="Nombre...">
+                    <button id="btnAdd" class="btn-small-add">AÑADIR</button>
+                </div>
+                <ul id="playersUl"></ul>
+                <div class="card-footer">
+                    <span>JUGADORES CARGADOS: </span><span id="count-jugadores" class="card-value">0</span>
+                </div>
             </div>
-            <ul id="playersUl"></ul> 
-            <button id="btnStart" class="btn-main" disabled>INICIAR PARTIDA</button>
+            <div class="settings-grid">
+                <div class="menu-card">
+                    <div class="card-info"><i class="fas fa-clock" style="color: #f6b40e;"></i><div class="card-title">TIEMPO</div></div>
+                    <select id="timeSelect" class="select-style">
+                        <option value="180">3 MIN</option><option value="300">5 MIN</option>
+                    </select>
+                </div>
+                <div class="menu-card">
+                    <div class="card-info"><i class="fas fa-user-ninja" style="color: #ff3d00;"></i><div class="card-title">IMPOS.</div></div>
+                    <select id="impoCountSelect" class="select-style"><option value="1">1</option><option value="2">2</option></select>
+                </div>
+            </div>
+            <button id="btnStart" class="btn-start-game">COMENZAR JUEGO</button>
         </div>
 
         <div id="reveal-screen" class="screen hidden">
-            <h2 id="turnOwner" style="color: white;">---</h2>
-            <div class="scanner-container">
-                <div id="wordBox" class="word-card" style="color: white;">CLICK PARA ESCANEAR</div>
-                <div class="scan-bar"></div>
-            </div>
-            <button id="btnNext" class="btn-main hidden">CONFIRMAR</button>
+            <h2 id="turnOwner">---</h2>
+            <div class="word-card" id="wordBox">TOCÁ PARA REVELAR</div>
+            <button id="btnNext" class="btn-start-game hidden">SIGUIENTE</button>
         </div>
 
         <div id="debate-screen" class="screen hidden">
-            <h2 style="color: white;">DEBATE</h2>
+            <h2 style="color:white">DEBATE</h2>
             <div id="timer">03:00</div>
-            <p id="remaining-count" style="color: #00d2ff; font-size: 0.8rem;"></p>
-            <div class="debate-controls">
-                <button id="btnSeguirRonda" class="btn-sec">MÁS TIEMPO</button>
-                <button id="btnIrAVotar" class="btn-main">IR A VOTAR</button>
-            </div>
+            <div id="remaining-count" style="margin-bottom: 20px;"></div>
+            <button id="btnIrAVotar" class="btn-start-game">IR A VOTACIÓN</button>
+            <button id="btnMasTiempo" class="btn-sec">+1 MINUTO</button>
         </div>
 
         <div id="vote-screen" class="screen hidden">
-            <h2 style="color: white;">IDENTIFICAR OBJETIVO</h2>
+            <h2 class="txt-impostor">¿QUIÉN ES EL CHANTA?</h2>
             <div id="voteGrid" class="grid"></div>
         </div>
 
         <div id="result-screen" class="screen hidden">
-            <div id="resultIdentity" class="identity-card" style="color: white;"></div>
-            <button id="btnFinalAction" class="btn-main">CONTINUAR</button>
+            <h2 id="resultIdentity">---</h2>
+            <div id="game-over-msg" style="font-size: 2rem; margin: 20px 0; font-weight: bold;"></div>
+            <button id="btnFinalAction" class="btn-start-game">CONTINUAR</button>
         </div>
 
         <div id="guess-screen" class="screen hidden">
-            <h2 class="flash" style="color: white;">ÚLTIMA OPORTUNIDAD</h2>
-            <p style="color: white;">ADIVINÁ LA PALABRA PARA GANAR:</p>
-            <input type="text" id="impostorGuess" placeholder="...">
-            <button id="btnCheckGuess" class="btn-main">CONFIRMAR</button>
+            <h2 class="txt-impostor">¡ÚLTIMA CHANCE!</h2>
+            <p>Si adivinás la palabra, ganás:</p>
+            <input type="text" id="impostorGuess" placeholder="¿Qué palabra era?">
+            <button id="btnCheckGuess" class="btn-start-game">ADIVINAR</button>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

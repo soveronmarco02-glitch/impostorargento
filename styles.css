@@ -62,3 +62,64 @@ h1, h2, p, .player-item { color: white; }
 .hidden { display: none; }
 .flash { animation: blink 0.8s infinite; }
 @keyframes blink { 50% { opacity: 0.2; } }
+:root {
+    --civil: #00d2ff;
+    --impostor: #ff2a2a;
+    --bg-dark: rgba(10, 15, 25, 0.95);
+}
+
+body {
+    margin: 0; height: 100vh; font-family: 'Courier New', Courier, monospace;
+    display: flex; justify-content: center; align-items: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://flagpedia.net/data/flags/w1600/ar.png') no-repeat center center fixed;
+    background-size: cover; overflow: hidden;
+}
+
+#game-container {
+    width: 90%; max-width: 450px; background: var(--bg-dark);
+    border: 2px solid white; padding: 20px; text-align: center;
+    box-shadow: 0 0 30px rgba(0,0,0,0.8); position: relative;
+}
+
+h1, h2, p { color: white; text-transform: uppercase; }
+
+#playersUl { padding: 0; max-height: 200px; overflow-y: auto; }
+.player-item {
+    background: rgba(255,255,255,0.1); border: 1px solid white;
+    margin: 5px 0; padding: 10px; display: flex; 
+    justify-content: space-between; align-items: center; color: white;
+}
+
+.btn-del {
+    background: var(--impostor); color: white; border: none;
+    padding: 5px 10px; cursor: pointer; font-weight: bold;
+}
+
+.txt-civil { color: var(--civil) !important; font-weight: bold; text-shadow: 0 0 10px var(--civil); }
+.txt-impostor { color: var(--impostor) !important; font-weight: bold; text-shadow: 0 0 10px var(--impostor); }
+
+.word-card {
+    background: #000; border: 2px dashed white; padding: 30px 15px;
+    font-size: 1.2rem; cursor: pointer; color: white; border-radius: 10px;
+}
+
+#timer { font-size: 5rem; color: #00ff88; margin: 10px 0; font-weight: bold; }
+
+.btn-main {
+    background: white; color: black; border: none; padding: 15px;
+    font-weight: bold; cursor: pointer; margin-top: 10px; width: 100%; text-transform: uppercase;
+}
+
+.btn-sec {
+    background: transparent; color: white; border: 1px solid white;
+    padding: 10px; cursor: pointer; margin-top: 10px; width: 100%; text-transform: uppercase;
+}
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+.hidden { display: none; }
+.flash { animation: blink 0.5s infinite; }
+@keyframes blink { 50% { opacity: 0.3; } }
+
+.input-group { display: flex; gap: 5px; margin-bottom: 15px; }
+input { flex: 1; padding: 10px; background: black; border: 1px solid white; color: white; }

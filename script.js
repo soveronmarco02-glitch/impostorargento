@@ -1,15 +1,15 @@
 const poolArgentina = [
-    {tripu: "Asado", impo: "pizza"}, {tripu: "Choripan", impo: "ensalada"},
+   {tripu: "Asado", impo: "pizza"}, {tripu: "Choripan", impo: "ensalada"},
     {tripu: "Empanada", impo: " masa"}, {tripu: "Alfajor", impo: "churro"},
     {tripu: "Milanesa", impo: "club"}, {tripu: "Mate", impo: "Infusión"},
     {tripu: "Fernet", impo: "vino"}, {tripu: "Dulce de Leche", impo: "helado"},
     {tripu: "Facturas", impo: "dulces"}, {tripu: "Pizza ", impo: " queso"},
     {tripu: "Mantecol", impo: "papa noel"}, {tripu: "Vitel Toné", impo: "empanada"},
     {tripu: "Locro", impo: "campo"}, {tripu: "Provoleta", impo: "asado"},
-    {tripu: "Pastelitos", impo: "harina"}, {tripu: "Churros", impo: "azúcar"},
-    {tripu: "Salame", impo: "bondiola"}, {tripu: "Vino Tinto", impo: "manaos"},
+    {tripu: "Pastelitos", impo: "arina"}, {tripu: "Churros", impo: "azúcar"},
+    {tripu: "Salame", impo: "bondiola"}, {tripu: "Vino Tinto", impo: "soda"},
     {tripu: "Gancia", impo: "hierbas"}, {tripu: "Torta Frita", impo: "lluvia"},
-    {tripu: "Humita", impo: "Crema"}, {tripu: "Garrapiñada", impo: "turron"},
+    {tripu: "Humita", impo: "Crema"}, {tripu: "Garrapiñada", impo: "seco"},
     {tripu: "Tereré", impo: "fría"}, {tripu: "Picada", impo: "futbol"},
     {tripu: "Soda", impo: "gas"}, {tripu: "Messi", impo: "Capitán"},
     {tripu: "Maradona", impo: "histórico"}, {tripu: "Dibu Martínez", impo: "famoso"},
@@ -30,10 +30,10 @@ const poolArgentina = [
     {tripu: "Ushuaia", impo: "sur"}, {tripu: "Calle Corrientes", impo: "Avenida"},
     {tripu: "La Quiaca", impo: "Pueblo"}, {tripu: "Puerto Madero", impo: "Barrio"},
     {tripu: "Caminito", impo: "colores"}, {tripu: "Glaciar Perito Moreno", impo: "Masa"},
-    {tripu: "Bondi", impo: "caminar"}, {tripu: "Laburo", impo: "pesado"},
+    {tripu: "Bondi", impo: "urbano"}, {tripu: "Laburo", impo: "pesado"},
     {tripu: "Chamuyo", impo: "falso"}, {tripu: "Guita", impo: "oro"},
     {tripu: "Fiaca", impo: "Ganar"}, {tripu: "Chanta", impo: "enojo"},
-    {tripu: "Crotos", impo: "Personas"}, {tripu: "Quilmes", impo: "flores"},
+    {tripu: "Crotos", impo: "Personas"}, {tripu: "Quilmes", impo: "cancha"},
     {tripu: "Mate Cocido", impo: "cafe"}
 ];
 
@@ -53,12 +53,15 @@ function actualizarListaUI() {
     const ul = document.getElementById('playersUl');
     ul.innerHTML = "";
     listaNombresGlobal.forEach((n, i) => {
-        ul.innerHTML += `<li class="player-item"><span>${n}</span><button style="color:red; background:none; border:none;" onclick="eliminarJugador(${i})">X</button></li>`;
+        ul.innerHTML += `<li class="player-item"><span>${n}</span><button style="color:red; background:none; border:none; cursor:pointer;" onclick="eliminarJugador(${i})">X</button></li>`;
     });
     document.getElementById('count-jugadores').innerText = listaNombresGlobal.length;
 }
 
-function eliminarJugador(i) { listaNombresGlobal.splice(i, 1); actualizarListaUI(); }
+function eliminarJugador(i) { 
+    listaNombresGlobal.splice(i, 1); 
+    actualizarListaUI(); 
+}
 
 document.getElementById('btnAdd').onclick = () => {
     const inp = document.getElementById('playerName');
@@ -85,8 +88,10 @@ document.getElementById('btnStart').onclick = () => {
 
     currentIndex = 0;
     datosPartida = listaNombresGlobal.map((n, i) => ({
-        nombre: n, word: indicesImpo.includes(i) ? par.impo : par.tripu,
-        role: indicesImpo.includes(i) ? "IMPOSTOR" : "CIVIL", vivo: true
+        nombre: n, 
+        word: indicesImpo.includes(i) ? par.impo : par.tripu,
+        role: indicesImpo.includes(i) ? "IMPOSTOR" : "CIVIL", 
+        vivo: true
     }));
 
     document.getElementById('setup-screen').classList.add('hidden');
@@ -100,7 +105,7 @@ function mostrarRevelacion() {
     const box = document.getElementById('wordBox');
     const btnNext = document.getElementById('btnNext');
     box.innerHTML = "TOCÁ PARA REVELAR";
-    box.style.borderColor = "#333";
+    box.style.borderColor = "var(--celeste-arg)";
     btnNext.classList.add('hidden');
 
     box.onclick = () => {
@@ -114,15 +119,27 @@ function mostrarRevelacion() {
 
 document.getElementById('btnNext').onclick = () => {
     currentIndex++;
-    if (currentIndex < datosPartida.length) mostrarRevelacion();
-    else { document.getElementById('reveal-screen').classList.add('hidden'); irADebate(); }
+    if (currentIndex < datosPartida.length) {
+        mostrarRevelacion();
+    } else { 
+        document.getElementById('reveal-screen').classList.add('hidden'); 
+        irADebate(); 
+    }
 };
 
 function irADebate() {
     document.getElementById('debate-screen').classList.remove('hidden');
     timeLeft = parseInt(document.getElementById('timeSelect').value);
+    
+    // Lista de vivos
     const vivos = datosPartida.filter(p => p.vivo);
     document.getElementById('remaining-count').innerHTML = `VIVOS (${vivos.length}): <br> <small>${vivos.map(v=>v.nombre).join(", ")}</small>`;
+    
+    // --- SORTEO ALEATORIO PARA EMPEZAR ---
+    const elegido = vivos[Math.floor(Math.random() * vivos.length)];
+    document.getElementById('firstPlayerName').innerText = `¡${elegido.nombre}! 🗣️`;
+    // -------------------------------------
+
     startTimer();
 }
 
@@ -133,7 +150,10 @@ function startTimer() {
         let m = Math.floor(timeLeft / 60);
         let s = timeLeft % 60;
         display.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
-        if (--timeLeft < 0) { clearInterval(timerInterval); display.innerText = "¡A VOTAR!"; }
+        if (--timeLeft < 0) { 
+            clearInterval(timerInterval); 
+            display.innerText = "¡TIEMPO!"; 
+        }
     }, 1000);
 }
 
@@ -145,9 +165,11 @@ document.getElementById('btnIrAVotar').onclick = () => {
     document.getElementById('vote-screen').classList.remove('hidden');
     const grid = document.getElementById('voteGrid');
     grid.innerHTML = "";
+    
     datosPartida.filter(p => p.vivo).forEach(p => {
         const btn = document.createElement('button');
-        btn.style = "background: #1a1d24; color: white; border: 1px solid #333; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: bold;";
+        btn.className = "btn-sec"; // Uso clase existente
+        btn.style.margin = "0";
         btn.innerText = p.nombre;
         btn.onclick = () => procesarVoto(p);
         grid.appendChild(btn);
@@ -170,10 +192,10 @@ function procesarVoto(jugador) {
             document.getElementById('result-screen').classList.add('hidden');
             document.getElementById('guess-screen').classList.remove('hidden');
         } else {
-            const civs = datosPartida.filter(p => p.vivo && p.role === "CIVIL").length;
-            const imps = datosPartida.filter(p => p.vivo && p.role === "IMPOSTOR").length;
+            const civsVivos = datosPartida.filter(p => p.vivo && p.role === "CIVIL").length;
+            const impsVivosCant = datosPartida.filter(p => p.vivo && p.role === "IMPOSTOR").length;
             
-            if (civs <= imps) {
+            if (civsVivos <= impsVivosCant) {
                 anunciarGanador("IMPOSTORES");
             } else {
                 document.getElementById('result-screen').classList.add('hidden');
@@ -186,7 +208,7 @@ function procesarVoto(jugador) {
 document.getElementById('btnCheckGuess').onclick = () => {
     const g = document.getElementById('impostorGuess').value.toLowerCase().trim();
     if (g === palabraCorrecta.toLowerCase()) {
-        anunciarGanador("IMPOSTOR (ADIVINÓ)");
+        anunciarGanador("IMPOSTORES (ADIVINÓ)");
     } else {
         anunciarGanador("CIVILES (IMPOSTOR ERRÓ)");
     }
